@@ -315,11 +315,12 @@ function diciottesimaFunzione(N) {
         return "Il numero inserito è negativo"
     } else {
         let matrice = [];
+        //Vado ad inserire un numero N di array(in cui andrò a lavorare) alla matrice
         for (let i = 0; i < N; i++) {
             matrice.push([])
         }
         
-        let numero = 1;
+        let numero = 1; //contatore del numero che vado ad inserire di volta in volta
         let riga = 0; //Limite superiore del movimento, riga in cui si lavora da sinistra verso destra(Si lvaora con questa riga nel primo ciclo for)
         let colonna = 0; //Limite sinistro del movimento, colonna in cui si lavora da sotto verso sopra(Si lvaora con questa colonna nel quarto ciclo for)
         let ultimaRiga = N ; //Limite inferiore del movimento, riga in cui si lavora da destra verso sinistra(Si lvaora con questa riga nel terzo ciclo for)
@@ -331,39 +332,47 @@ function diciottesimaFunzione(N) {
         In questo caso non ci sarebbe più spazio in cui lavorare
         */
         while (riga <= ultimaRiga && colonna <= ultimaColonna) {
+            //Lavoro da sinistra verso destra(nella riga "riga")
             for (let i = colonna; i < ultimaColonna; i++) {
                 matrice[riga][i] = numero;
                 numero++
+                //aumento il contatore del numero che vado ad inserire 
             }
             riga++ 
             //Aumento di 1 così la prossima volta che si lavora al for qui sopra si lavora nella riga più sotto 
             //"abbasso" di 1 livello il limite superiore in cui si vanno ad inserire i numeri
 
+            //Lavoro da sopra verso sotto(nella colonna "ultimaColonna")
             for (let i = riga; i < ultimaRiga; i++) {
                 matrice[i][ultimaColonna-1] = numero;
                 // ultimaColonna-1 perchè le posizioni partono da 0 e quindi lavorerei una colonna più a destra del dovuto(fuori dalla matrice)
                 numero++
+                //aumento il contatore del numero che vado ad inserire 
             }
             ultimaColonna--
             //Diminuisco di 1 così la prossima volta che si lavora al for qui sopra si lavora nella colonna più a sinistra 
             //Sposto 1 livello il limite destro in cui si vanno ad inserire i numeri
             
+            //Lavoro da destra verso sinistra(nella riga "ultimaRiga")
             for (let i = ultimaColonna-1; i >= colonna; i--) {
                 //ultimaColonna-1 perchè le posizioni partono da 0 e quindi lavorerei una colonna più a destra del dovuto(ultima colonna in cui ho lavorato nel for precedente)
                 //in questo caso se non mettessi il -1 inzierebbe a lavorare dall'ultima colonna(su cui ho già lavorato) 
                 matrice[ultimaRiga-1][i] = numero;
                 //ultimaRiga-1 perchè la posizioni partono da 0 e quindi lavorerei una riga più sotto del dovuto(fuori dalla matrice)
-                numero++                
+                numero++             
+                //aumento il contatore del numero che vado ad inserire    
             }
             ultimaRiga--
             //Diminuisco di 1 così la prossima volta che si lavora al for qui sopra si lavora nella riga più sopra 
             //"alzo" di 1 livello il limite superiore in cui si vanno ad inserire i numeri
             
+            //Lavoro da sotto verso sopra(nella colonna "colonna")
             for (let i = ultimaRiga-1; i >= riga; i--) {
                 //ultimaRiga-1 perchè la posizioni partono da 0 e quindi lavorerei una riga più sotto del dovuto(ultima riga in cui ho lavorato nel for precedente)
                 //in questo caso se non mettessi il -1 inzierebbe a lavorare dall'ultima riga(su cui ho già lavorato) 
                 matrice[i][colonna] = numero; 
                 numero++
+                //aumento il contatore del numero che vado ad inserire 
             }
             colonna++
             //Aumento di 1 così la prossima volta che si lavora al for qui sopra si lavora nella colonna più a destra 
