@@ -325,6 +325,11 @@ function diciottesimaFunzione(N) {
         let ultimaRiga = N ; //Limite inferiore del movimento, riga in cui si lavora da destra verso sinistra(Si lvaora con questa riga nel terzo ciclo for)
         let ultimaColonna = N ; //Limite destro del movimento, colonna in cui si lavora da sopra verso sotto(Si lvaora con questa colonna nel secondo ciclo for)
 
+        /*Il ciclo while va a concludersi nel momento in cui:
+        -il limite sinistro combacia con quello destro (colonna <= ultimaColonna)
+        -il limite superiore combacia con quello inferiore (riga <= ultimaRiga)
+        In questo caso non ci sarebbe più spazio in cui lavorare
+        */
         while (riga <= ultimaRiga && colonna <= ultimaColonna) {
             for (let i = colonna; i < ultimaColonna; i++) {
                 matrice[riga][i] = numero;
